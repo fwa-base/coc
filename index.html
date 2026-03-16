@@ -217,6 +217,78 @@
         .layout-links { background-color: #F5F5F5; padding: 15px; border-radius: 5px; }
         .layout-links p { margin-bottom: 8px; }
 
+        .layout-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .layout-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #1565C0, #1976D2);
+            border-radius: 10px;
+            padding: 14px 10px;
+            text-decoration: none;
+            color: white;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .layout-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
+
+        .layout-th {
+            font-size: 1.3rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .layout-btn {
+            font-size: 0.8rem;
+            background-color: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .th-base-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 10px 0;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .th-base-col {
+            flex: 1;
+            min-width: 300px;
+            max-width: 450px;
+        }
+
+        .th-base-link {
+            display: block;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .th-base-link:hover {
+            transform: translateY(-8px);
+        }
+
+        .th-base-link img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         .warning-box {
             background-color: #FFEBEE;
             border-left: 4px solid #F44336;
@@ -276,6 +348,7 @@
             .main-title { font-size: 1.3rem; }
             .slide-grid { grid-template-columns: repeat(2, 1fr); }
             .section-with-image { flex-direction: column; }
+            .th-base-col { min-width: 100%; }
         }
     </style>
 </head>
@@ -473,32 +546,107 @@
             </a>
         </div>
 
-        <h3 style="color:#5D4037; margin-bottom:12px;">Base Pictures by Town Hall Level:</h3>
-        <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr)); gap:10px; margin-bottom:20px;">
-            <div style="background:#F5F5F5; padding:12px; border-radius:5px; border:1px solid #E0E0E0;"><strong>TH18:</strong> <a href="https://tiny.cc/fwabases18" target="_blank">tiny.cc/fwabases18</a></div>
-            <div style="background:#F5F5F5; padding:12px; border-radius:5px; border:1px solid #E0E0E0;"><strong>TH17:</strong> <a href="https://tiny.cc/fwabases17" target="_blank">tiny.cc/fwabases17</a></div>
-            <div style="background:#F5F5F5; padding:12px; border-radius:5px; border:1px solid #E0E0E0;"><strong>TH16:</strong> <a href="https://tiny.cc/fwabases16" target="_blank">tiny.cc/fwabases16</a></div>
-            <div style="background:#F5F5F5; padding:12px; border-radius:5px; border:1px solid #E0E0E0;"><strong>TH15:</strong> <a href="https://tiny.cc/fwabases15" target="_blank">tiny.cc/fwabases15</a></div>
-            <div style="background:#F5F5F5; padding:12px; border-radius:5px; border:1px solid #E0E0E0;"><strong>TH14:</strong> <a href="https://tiny.cc/fwabases14" target="_blank">tiny.cc/fwabases14</a></div>
-            <div style="background:#F5F5F5; padding:12px; border-radius:5px; border:1px solid #E0E0E0;"><strong>TH13:</strong> <a href="https://tiny.cc/fwabases13" target="_blank">tiny.cc/fwabases13</a></div>
-            <div style="background:#F5F5F5; padding:12px; border-radius:5px; border:1px solid #E0E0E0;"><strong>TH12:</strong> <a href="https://tiny.cc/fwabase12" target="_blank">tiny.cc/fwabase12</a></div>
-            <div style="background:#F5F5F5; padding:12px; border-radius:5px; border:1px solid #E0E0E0;"><strong>TH11:</strong> <a href="https://tiny.cc/fwabase11" target="_blank">tiny.cc/fwabase11</a></div>
-            <div style="background:#F5F5F5; padding:12px; border-radius:5px; border:1px solid #E0E0E0;"><strong>TH10:</strong> <a href="https://tiny.cc/fwabase10" target="_blank">tiny.cc/fwabase10</a></div>
-            <div style="background:#F5F5F5; padding:12px; border-radius:5px; border:1px solid #E0E0E0;"><strong>TH9:</strong> <a href="https://tiny.cc/fwabases9" target="_blank">tiny.cc/fwabases9</a></div>
+        <h3 style="color:#5D4037; margin-bottom:15px;">Base Pictures by Town Hall Level:</h3>
+        <div class="th-base-container">
+            <div class="th-base-col">
+                <a href="https://tiny.cc/fwabases18" class="th-base-link" target="_blank">
+                    <img loading="lazy" src="https://farmwaralliance.org/wp-content/uploads/2025/12/th18-update-copy-624x1024.jpg" alt="TH18 Update">
+                </a>
+            </div>
+            <div class="th-base-col">
+                <a href="https://tiny.cc/fwabases17" class="th-base-link" target="_blank">
+                    <img loading="lazy" src="https://farmwaralliance.org/wp-content/uploads/2025/02/layout-th17-geartower-copy-624x1024.jpg" alt="TH17 Update">
+                </a>
+            </div>
+            <div class="th-base-col">
+                <a href="https://tiny.cc/fwabases16" class="th-base-link" target="_blank">
+                    <img loading="lazy" src="https://farmwaralliance.org/wp-content/uploads/2024/12/th16-update-copy-624x1024.jpg" alt="TH16 Update">
+                </a>
+            </div>
+            <div class="th-base-col">
+                <a href="https://tiny.cc/fwabases15" class="th-base-link" target="_blank">
+                    <img loading="lazy" src="https://farmwaralliance.org/wp-content/uploads/2024/12/th15-update-copy-624x1024.jpg" alt="TH15 Update">
+                </a>
+            </div>
+            <div class="th-base-col">
+                <a href="https://tiny.cc/fwabases14" class="th-base-link" target="_blank">
+                    <img loading="lazy" src="https://farmwaralliance.org/wp-content/uploads/2024/12/th14-update-copy-624x1024.jpg" alt="TH14 Update">
+                </a>
+            </div>
+            <div class="th-base-col">
+                <a href="https://tiny.cc/fwabases13" class="th-base-link" target="_blank">
+                    <img loading="lazy" src="https://farmwaralliance.org/wp-content/uploads/2024/12/th13-update-copy-624x1024.jpg" alt="TH13 Update">
+                </a>
+            </div>
+            <div class="th-base-col">
+                <a href="https://tiny.cc/fwabases12" class="th-base-link" target="_blank">
+                    <img loading="lazy" src="https://farmwaralliance.org/wp-content/uploads/2024/12/th12-update-copy-624x1024.jpg" alt="TH12 Update">
+                </a>
+            </div>
+            <div class="th-base-col">
+                <a href="https://tiny.cc/fwabases11" class="th-base-link" target="_blank">
+                    <img loading="lazy" src="https://farmwaralliance.org/wp-content/uploads/2024/12/th11-update-copy-624x1024.jpg" alt="TH11 Update">
+                </a>
+            </div>
+            <div class="th-base-col">
+                <a href="https://tiny.cc/fwabases10" class="th-base-link" target="_blank">
+                    <img loading="lazy" src="https://farmwaralliance.org/wp-content/uploads/2024/12/th10-update-copy-624x1024.jpg" alt="TH10 Update">
+                </a>
+            </div>
+            <div class="th-base-col">
+                <a href="https://tiny.cc/fwabases9" class="th-base-link" target="_blank">
+                    <img loading="lazy" src="https://farmwaralliance.org/wp-content/uploads/2024/12/th9-update-copy-624x1024.jpg" alt="TH9 Update">
+                </a>
+            </div>
+            <div class="th-base-col">
+                <a href="https://tiny.cc/fwabases8" class="th-base-link" target="_blank">
+                    <img loading="lazy" src="https://farmwaralliance.org/wp-content/uploads/2024/12/th8-update-copy-624x1024.jpg" alt="TH8 Update">
+                </a>
+            </div>
         </div>
 
         <h3 style="color:#5D4037; margin-bottom:12px;">Copy Layout Links (Direct Import to Clash of Clans):</h3>
-        <div class="layout-links">
-            <p><strong>TH18:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH18%3AWB%3AAAAAAgAAAAMIFXlpMp2DcHS1uqUMNgA4" target="_blank">Copy Layout</a></p>
-            <p><strong>TH17:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH17%3AWB%3AAAAAMwAAAAJvKqSJR0K6j5vKXNzKC0Eo" target="_blank">Copy Layout</a></p>
-            <p><strong>TH16:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH16%3AWB%3AAAAAWQAAAAHYhYD8UAx4YzwvwSR5_kYp" target="_blank">Copy Layout</a></p>
-            <p><strong>TH15:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH15%3AWB%3AAAAAVAAAAAHixZ2x1n8Q5kcjKac5Ta3R" target="_blank">Copy Layout</a></p>
-            <p><strong>TH14:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH14%3AWB%3AAAAAPQAAAAJQFTvvhxVFhpHEctRKa2RJ" target="_blank">Copy Layout</a></p>
-            <p><strong>TH13:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH13%3AWB%3AAAAANQAAAAJg3K_0TUhkZz6SfZeONbRt" target="_blank">Copy Layout</a></p>
-            <p><strong>TH12:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH12%3AWB%3AAAAAAAAAAAMJ-9kz6ATWMmoYhsM5X4Zo" target="_blank">Copy Layout</a></p>
-            <p><strong>TH11:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH11%3AWB%3AAAAAJQAAAAKdWWT-kVMWijtjXI3Ieeeu" target="_blank">Copy Layout</a></p>
-            <p><strong>TH10:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH10%3AWB%3AAAAASwAAAAHxz3UQ1NJeeTS0DGN61GmR" target="_blank">Copy Layout</a></p>
-            <p><strong>TH9:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH9%3AWB%3AAAAANQAAAAJg3suFcORqtzL2m38RiJuD" target="_blank">Copy Layout</a></p>
+        <div class="layout-grid">
+            <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH18%3AWB%3AAAAAAgAAAAMIFXlpMp2DcHS1uqUMNgA4" target="_blank" class="layout-card">
+                <span class="layout-th">TH 18</span>
+                <span class="layout-btn">📋 Copy Layout</span>
+            </a>
+            <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH17%3AWB%3AAAAAMwAAAAJvKqSJR0K6j5vKXNzKC0Eo" target="_blank" class="layout-card">
+                <span class="layout-th">TH 17</span>
+                <span class="layout-btn">📋 Copy Layout</span>
+            </a>
+            <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH16%3AWB%3AAAAAWQAAAAHYhYD8UAx4YzwvwSR5_kYp" target="_blank" class="layout-card">
+                <span class="layout-th">TH 16</span>
+                <span class="layout-btn">📋 Copy Layout</span>
+            </a>
+            <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH15%3AWB%3AAAAAVAAAAAHixZ2x1n8Q5kcjKac5Ta3R" target="_blank" class="layout-card">
+                <span class="layout-th">TH 15</span>
+                <span class="layout-btn">📋 Copy Layout</span>
+            </a>
+            <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH14%3AWB%3AAAAAPQAAAAJQFTvvhxVFhpHEctRKa2RJ" target="_blank" class="layout-card">
+                <span class="layout-th">TH 14</span>
+                <span class="layout-btn">📋 Copy Layout</span>
+            </a>
+            <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH13%3AWB%3AAAAANQAAAAJg3K_0TUhkZz6SfZeONbRt" target="_blank" class="layout-card">
+                <span class="layout-th">TH 13</span>
+                <span class="layout-btn">📋 Copy Layout</span>
+            </a>
+            <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH12%3AWB%3AAAAAAAAAAAMJ-9kz6ATWMmoYhsM5X4Zo" target="_blank" class="layout-card">
+                <span class="layout-th">TH 12</span>
+                <span class="layout-btn">📋 Copy Layout</span>
+            </a>
+            <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH11%3AWB%3AAAAAJQAAAAKdWWT-kVMWijtjXI3Ieeeu" target="_blank" class="layout-card">
+                <span class="layout-th">TH 11</span>
+                <span class="layout-btn">📋 Copy Layout</span>
+            </a>
+            <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH10%3AWB%3AAAAASwAAAAHxz3UQ1NJeeTS0DGN61GmR" target="_blank" class="layout-card">
+                <span class="layout-th">TH 10</span>
+                <span class="layout-btn">📋 Copy Layout</span>
+            </a>
+            <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH9%3AWB%3AAAAANQAAAAJg3suFcORqtzL2m38RiJuD" target="_blank" class="layout-card">
+                <span class="layout-th">TH 9</span>
+                <span class="layout-btn">📋 Copy Layout</span>
+            </a>
         </div>
 
         <div class="warning-box">
@@ -523,10 +671,9 @@
     <div class="follow-us">
         <h3>FOLLOW US</h3>
         <div class="social-links">
-            <a href="#" style="background-color:#4267B2;">Facebook</a>
-            <a href="https://twitter.com/FarmWarAlliance" target="_blank" style="background-color:#1DA1F2;">Twitter</a>
-            <a href="https://band.us/@reqfwa" target="_blank" style="background-color:#FAE100; color:#333;">Band (REQ)</a>
-            <a href="https://band.us/@joinfwa" target="_blank" style="background-color:#FAE100; color:#333;">Band (Join)</a>
+            <a href="https://twitter.com/FarmWarAlliance" target="_blank" style="background-color:#000; color:#fff;">𝕏 (Twitter)</a>
+            <a href="https://band.us/@reqfwa" target="_blank" style="background-color:#FAE100; color:#333;">🎵 Band (REQ)</a>
+            <a href="https://band.us/@joinfwa" target="_blank" style="background-color:#FAE100; color:#333;">🎵 Band (Join)</a>
         </div>
     </div>
 
