@@ -139,24 +139,27 @@
         
         .section-image img {
             max-width: 100%;
+            max-height: 250px;
             height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border: 2px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: 1px solid #ccc;
         }
         
         .image-placeholder {
             width: 100%;
-            height: 300px;
+            max-width: 300px;
+            height: 200px;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            border-radius: 8px;
+            border-radius: 5px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             color: #666;
-            font-size: 1.1rem;
-            border: 2px dashed #999;
+            font-size: 1rem;
+            border: 1px dashed #999;
+            margin: 0 auto;
         }
         
         .image-placeholder i {
@@ -167,30 +170,72 @@
         
         .instruction-images {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
             margin-top: 20px;
         }
         
         .instruction-card {
             background-color: white;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            border-radius: 6px;
+            padding: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             text-align: center;
         }
         
         .instruction-card.allowed {
-            border-top: 4px solid #4CAF50;
+            border-top: 3px solid #4CAF50;
         }
         
         .instruction-card.not-allowed {
-            border-top: 4px solid #F44336;
+            border-top: 3px solid #F44336;
         }
         
         .instruction-card h4 {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             color: #333;
+            font-size: 0.95rem;
+        }
+        
+        .slide-image {
+            width: 100%;
+            height: 150px;
+            object-fit: contain;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        
+        .slide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .slide-item {
+            text-align: center;
+            background-color: white;
+            padding: 10px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .slide-item img {
+            width: 100%;
+            height: 120px;
+            object-fit: contain;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            border: 1px solid #ddd;
+        }
+        
+        .slide-number {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: bold;
+            margin-top: 5px;
         }
         
         @media (max-width: 768px) {
@@ -261,18 +306,9 @@
                 </div>
             </div>
             <div class="section-image">
-                <div class="image-placeholder" style="background: linear-gradient(135deg, #8BC34A 0%, #4CAF50 100%); color: white;">
-                    <div style="font-size: 2.5rem; margin-bottom: 10px;">🏰</div>
-                    <div style="font-weight: bold; font-size: 1.2rem;">Town Hall Section</div>
-                    <div style="margin-top: 10px; font-size: 0.9rem; background-color: rgba(255,255,255,0.2); padding: 5px 10px; border-radius: 3px;">
-                        TH in corner + Eagle + Air Defenses
-                    </div>
-                    <div style="margin-top: 15px; font-size: 0.8rem; opacity: 0.9;">
-                        Example: TH12+ corner placement with 5 space gap
-                    </div>
-                </div>
-                <p style="margin-top: 10px; font-size: 0.9rem; color: #666; text-align: center;">
-                    <em>Actual image would show Town Hall in corner with proper spacing</em>
+                <img src="https://farmwaralliance.org/wp-content/uploads/2021/08/Giga_Tesla5.png" alt="Barbarian King Section" style="max-width: 250px; height: auto; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid #ccc; display: block; margin: 0 auto;">
+                <p style="margin-top: 8px; font-size: 0.85rem; color: #666; text-align: center;">
+                    <em>TH section example image</em>
                 </p>
             </div>
         </div>
@@ -289,18 +325,9 @@
                 </div>
             </div>
             <div class="section-image">
-                <div class="image-placeholder" style="background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%); color: white;">
-                    <div style="font-size: 2.5rem; margin-bottom: 10px;">👑</div>
-                    <div style="font-weight: bold; font-size: 1.2rem;">King Section</div>
-                    <div style="margin-top: 10px; font-size: 0.9rem; background-color: rgba(255,255,255,0.2); padding: 5px 10px; border-radius: 3px;">
-                        BK + Cannons + Mortars + X-Bows (ground)
-                    </div>
-                    <div style="margin-top: 15px; font-size: 0.8rem; opacity: 0.9;">
-                        Easy to attack with flying troops
-                    </div>
-                </div>
-                <p style="margin-top: 10px; font-size: 0.9rem; color: #666; text-align: center;">
-                    <em>Actual image would show Barbarian King with ground defenses</em>
+                <img src="https://farmwaralliance.org/wp-content/uploads/2021/08/Barbarian_King_info.png" alt="Barbarian King Section" style="max-width: 250px; height: auto; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid #ccc; display: block; margin: 0 auto;">
+                <p style="margin-top: 10px; font-size: 0.85rem; color: #666; text-align: center;">
+                    <em>Barbarian King section example</em>
                 </p>
             </div>
         </div>
@@ -316,18 +343,9 @@
                 <p>This section should be moderately easy to take out with a few giants, wizards, or with barbs, archers, and a heal spell. Walls should not hinder troop deployment around this section.</p>
             </div>
             <div class="section-image">
-                <div class="image-placeholder" style="background: linear-gradient(135deg, #9C27B0 0%, #7B1FA2 100%); color: white;">
-                    <div style="font-size: 2.5rem; margin-bottom: 10px;">👸</div>
-                    <div style="font-weight: bold; font-size: 1.2rem;">Queen Section</div>
-                    <div style="margin-top: 10px; font-size: 0.9rem; background-color: rgba(255,255,255,0.2); padding: 5px 10px; border-radius: 3px;">
-                        AQ + Infernos (single) + Scattershots
-                    </div>
-                    <div style="margin-top: 15px; font-size: 0.8rem; opacity: 0.9;">
-                        Infernos have exposed edges
-                    </div>
-                </div>
+                <img src="https://farmwaralliance.org/wp-content/uploads/2021/08/Archer_Queen_info.png" alt="Barbarian King Section" style="max-width: 250px; height: auto; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid #ccc; display: block; margin: 0 auto;">
                 <p style="margin-top: 10px; font-size: 0.9rem; color: #666; text-align: center;">
-                    <em>Actual image would show Archer Queen with exposed inferno edges</em>
+                    <em>Archer Queen with exposed inferno edges</em>
                 </p>
             </div>
         </div>
@@ -347,18 +365,9 @@
                 </div>
             </div>
             <div class="section-image">
-                <div class="image-placeholder" style="background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%); color: white;">
-                    <div style="font-size: 2.5rem; margin-bottom: 10px;">⚠️</div>
-                    <div style="font-weight: bold; font-size: 1.2rem;">Traps Section</div>
-                    <div style="margin-top: 10px; font-size: 0.9rem; background-color: rgba(255,255,255,0.2); padding: 5px 10px; border-radius: 3px;">
-                        All traps in walled compartment
-                    </div>
-                    <div style="margin-top: 15px; font-size: 0.8rem; opacity: 0.9;">
-                        Completely enclosed with walls
-                    </div>
-                </div>
+                <img src="https://farmwaralliance.org/wp-content/uploads/2021/08/Wall_Breaker_info.png" alt="Barbarian King Section" style="max-width: 250px; height: auto; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid #ccc; display: block; margin: 0 auto;">
                 <p style="margin-top: 10px; font-size: 0.9rem; color: #666; text-align: center;">
-                    <em>Actual image would show fully walled trap compartment</em>
+                    <em>Example: Fully walled trap section</em>
                 </p>
             </div>
         </div>
@@ -369,60 +378,84 @@
         <div class="section-content">
             <p>Below are examples showing correct and incorrect base setups. These images help you understand what is allowed and what is not allowed in FWA base designs.</p>
             
-            <div class="instruction-images">
-                <div class="instruction-card allowed">
-                    <h4>✅ ALLOWED: Proper TH Placement</h4>
-                    <div class="image-placeholder" style="height: 200px;">
-                        <div>🏰</div>
-                        <div>TH in corner with 5 space gap</div>
-                    </div>
-                    <p style="margin-top: 10px;">Town Hall properly placed in corner with required spacing.</p>
+            <h3 style="color: #5D4037; margin-top: 20px; margin-bottom: 15px;">FWA Base Design Guidelines - All 16 Slides</h3>
+            <p>Below are all 16 slides from the FWA Base Design Guidelines presentation. These images show detailed examples of correct and incorrect base setups.</p>
+            
+            <div class="slide-grid">
+                <div class="slide-item">
+                    <img src="images/slide-1.png" alt="Slide 1 - Base Guidelines">
+                    <div class="slide-number">Slide 1</div>
                 </div>
-                
-                <div class="instruction-card not-allowed">
-                    <h4>❌ NOT ALLOWED: Incorrect TH Placement</h4>
-                    <div class="image-placeholder" style="height: 200px;">
-                        <div>🚫</div>
-                        <div>TH not in corner</div>
-                    </div>
-                    <p style="margin-top: 10px;">Town Hall not in corner or without proper spacing.</p>
+                <div class="slide-item">
+                    <img src="images/slide-2.jpg" alt="Slide 2 - Base Guidelines">
+                    <div class="slide-number">Slide 2</div>
                 </div>
-                
-                <div class="instruction-card allowed">
-                    <h4>✅ ALLOWED: Exposed Inferno Edge</h4>
-                    <div class="image-placeholder" style="height: 200px;">
-                        <div>🔥</div>
-                        <div>Inferno with exposed edge</div>
-                    </div>
-                    <p style="margin-top: 10px;">Inferno Tower with one edge completely exposed.</p>
+                <div class="slide-item">
+                    <img src="images/slide-3.jpg" alt="Slide 3 - Base Guidelines">
+                    <div class="slide-number">Slide 3</div>
                 </div>
-                
-                <div class="instruction-card not-allowed">
-                    <h4>❌ NOT ALLOWED: Protected Inferno</h4>
-                    <div class="image-placeholder" style="height: 200px;">
-                        <div>🚫</div>
-                        <div>Inferno fully protected</div>
-                    </div>
-                    <p style="margin-top: 10px;">Inferno Tower surrounded by buildings/walls.</p>
+                <div class="slide-item">
+                    <img src="images/slide-4.jpg" alt="Slide 4 - Base Guidelines">
+                    <div class="slide-number">Slide 4</div>
+                </div>
+                <div class="slide-item">
+                    <img src="images/slide-5.jpg" alt="Slide 5 - Base Guidelines">
+                    <div class="slide-number">Slide 5</div>
+                </div>
+                <div class="slide-item">
+                    <img src="images/slide-6.jpg" alt="Slide 6 - Base Guidelines">
+                    <div class="slide-number">Slide 6</div>
+                </div>
+                <div class="slide-item">
+                    <img src="images/slide-7.jpg" alt="Slide 7 - Base Guidelines">
+                    <div class="slide-number">Slide 7</div>
+                </div>
+                <div class="slide-item">
+                    <img src="images/slide-8.jpg" alt="Slide 8 - Base Guidelines">
+                    <div class="slide-number">Slide 8</div>
+                </div>
+                <div class="slide-item">
+                    <img src="images/slide-9.jpg" alt="Slide 9 - Base Guidelines">
+                    <div class="slide-number">Slide 9</div>
+                </div>
+                <div class="slide-item">
+                    <img src="images/slide-10.jpg" alt="Slide 10 - Base Guidelines">
+                    <div class="slide-number">Slide 10</div>
+                </div>
+                <div class="slide-item">
+                    <img src="images/slide-11.jpg" alt="Slide 11 - Base Guidelines">
+                    <div class="slide-number">Slide 11</div>
+                </div>
+                <div class="slide-item">
+                    <img src="images/slide-12.jpg" alt="Slide 12 - Base Guidelines">
+                    <div class="slide-number">Slide 12</div>
+                </div>
+                <div class="slide-item">
+                    <img src="images/slide-13.jpg" alt="Slide 13 - Base Guidelines">
+                    <div class="slide-number">Slide 13</div>
+                </div>
+                <div class="slide-item">
+                    <img src="images/slide-14.jpg" alt="Slide 14 - Base Guidelines">
+                    <div class="slide-number">Slide 14</div>
+                </div>
+                <div class="slide-item">
+                    <img src="images/slide-15.jpg" alt="Slide 15 - Base Guidelines">
+                    <div class="slide-number">Slide 15</div>
+                </div>
+                <div class="slide-item">
+                    <img src="images/slide-16.jpg" alt="Slide 16 - Base Guidelines">
+                    <div class="slide-number">Slide 16</div>
                 </div>
             </div>
             
             <div style="margin-top: 30px; text-align: center;">
-                <h3>Base Pictures by Town Hall Level</h3>
-                <p>Click on any TH level to view example base images:</p>
-                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 15px;">
-                    <a href="https://imgur.com/a/th-18-lyzzquy" target="_blank" style="display: inline-block; padding: 8px 15px; background-color: #2196F3; color: white; text-decoration: none; border-radius: 5px;">TH18</a>
-                    <a href="https://tiny.cc/fwabases17" target="_blank" style="display: inline-block; padding: 8px 15px; background-color: #2196F3; color: white; text-decoration: none; border-radius: 5px;">TH17</a>
-                    <a href="https://tiny.cc/fwabases16" target="_blank" style="display: inline-block; padding: 8px 15px; background-color: #2196F3; color: white; text-decoration: none; border-radius: 5px;">TH16</a>
-                    <a href="https://Tiny.cc/fwabases15" target="_blank" style="display: inline-block; padding: 8px 15px; background-color: #2196F3; color: white; text-decoration: none; border-radius: 5px;">TH15</a>
-                    <a href="https://Tiny.cc/fwabases14" target="_blank" style="display: inline-block; padding: 8px 15px; background-color: #2196F3; color: white; text-decoration: none; border-radius: 5px;">TH14</a>
-                    <a href="https://tiny.cc/fwabases13" target="_blank" style="display: inline-block; padding: 8px 15px; background-color: #2196F3; color: white; text-decoration: none; border-radius: 5px;">TH13</a>
-                    <a href="https://tiny.cc/fwabase12" target="_blank" style="display: inline-block; padding: 8px 15px; background-color: #2196F3; color: white; text-decoration: none; border-radius: 5px;">TH12</a>
-                    <a href="https://tiny.cc/fwabase11" target="_blank" style="display: inline-block; padding: 8px 15px; background-color: #2196F3; color: white; text-decoration: none; border-radius: 5px;">TH11</a>
-                    <a href="https://tiny.cc/fwabase10" target="_blank" style="display: inline-block; padding: 8px 15px; background-color: #2196F3; color: white; text-decoration: none; border-radius: 5px;">TH10</a>
-                    <a href="https://tiny.cc/fwabases9" target="_blank" style="display: inline-block; padding: 8px 15px; background-color: #2196F3; color: white; text-decoration: none; border-radius: 5px;">TH9</a>
+                <div class="highlight" style="text-align: center; background-color: #FFF3E0; padding: 15px;">
+                    <h3 style="color: #FF6F00; margin-bottom: 15px;">View Complete Google Slides Presentation</h3>
+                    <p style="margin-bottom: 15px;">For the complete interactive presentation with all guidelines:</p>
+                    <a href="https://docs.google.com/presentation/d/1rZSWi9ccd4Mw6Ab3FHh9AWpwBEiAG2VR1Db0Ey1ZqZ8/present" target="_blank" style="display: inline-block; background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">
+                        Open Full Google Slides Presentation
+                    </a>
                 </div>
-                <p style="margin-top: 15px; font-size: 0.9rem; color: #666;"><em>Note: These are external links to imgur.com with example base images</em></p>
             </div>
         </div>
     </div>
