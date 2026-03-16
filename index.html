@@ -5,12 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Base Design - Farm War Alliance</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
@@ -20,20 +16,16 @@
             margin: 0 auto;
             padding: 20px;
         }
-        
+
         header {
             text-align: center;
             padding: 20px 0;
             border-bottom: 2px solid #4CAF50;
             margin-bottom: 30px;
         }
-        
-        h1 {
-            color: #2E7D32;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        
+
+        h1 { color: #2E7D32; font-size: 2.5rem; margin-bottom: 10px; }
+
         .main-title {
             background-color: #4CAF50;
             color: white;
@@ -43,7 +35,33 @@
             text-align: center;
             font-size: 1.8rem;
         }
-        
+
+        .four-sections-card {
+            background-color: #E8F5E9;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .four-sections-card h2 { color: #2E7D32; margin-bottom: 15px; }
+
+        .four-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .four-cards div {
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            min-width: 200px;
+        }
+
         .requirements {
             background-color: #fff;
             padding: 20px;
@@ -52,7 +70,9 @@
             margin-bottom: 20px;
             border-left: 4px solid #4CAF50;
         }
-        
+
+        .requirements p { margin-bottom: 10px; }
+
         .section {
             background-color: #fff;
             padding: 20px;
@@ -61,22 +81,36 @@
             margin-bottom: 20px;
             border-left: 4px solid #2196F3;
         }
-        
+
         .section h2 {
             color: #1976D2;
             margin-bottom: 15px;
             padding-bottom: 10px;
             border-bottom: 1px solid #eee;
         }
-        
-        .section-content {
-            padding: 10px 0;
+
+        .section-with-image {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: flex-start;
         }
-        
-        .section-content p {
-            margin-bottom: 10px;
+
+        .section-text { flex: 1; min-width: 280px; }
+        .section-text p { margin-bottom: 10px; }
+
+        .section-image { flex: 0 0 auto; text-align: center; }
+
+        .section-image img {
+            max-width: 220px;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: 1px solid #ccc;
+            display: block;
+            margin: 0 auto;
         }
-        
+
         .highlight {
             background-color: #FFF3E0;
             padding: 15px;
@@ -84,24 +118,117 @@
             border-left: 4px solid #FF9800;
             margin: 15px 0;
         }
-        
-        footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-            text-align: center;
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .copyright {
-            background-color: #333;
-            color: white;
-            padding: 15px;
-            border-radius: 5px;
+
+        .highlight p { margin-bottom: 8px; }
+
+        /* Slide grid */
+        .slide-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
             margin-top: 20px;
         }
-        
+
+        .slide-item {
+            text-align: center;
+            background-color: white;
+            padding: 8px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .slide-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+        }
+
+        .slide-item img {
+            width: 100%;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        .slide-number {
+            font-size: 0.8rem;
+            color: #666;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.92);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active { display: flex; }
+
+        .modal-img {
+            max-width: 90vw;
+            max-height: 88vh;
+            border-radius: 6px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+        }
+
+        .modal-close {
+            position: fixed;
+            top: 18px; right: 28px;
+            color: white;
+            font-size: 42px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+            user-select: none;
+        }
+
+        .modal-close:hover { color: #ccc; }
+
+        .modal-caption {
+            position: fixed;
+            bottom: 15px;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 1rem;
+        }
+
+        /* FWA Guide section */
+        .guide-section {
+            background-color: #FFF8E1;
+            border-left: 4px solid #FFC107;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .guide-section h2 { color: #FF8F00; margin-bottom: 15px; }
+
+        .layout-links { background-color: #F5F5F5; padding: 15px; border-radius: 5px; }
+        .layout-links p { margin-bottom: 8px; }
+
+        .warning-box {
+            background-color: #FFEBEE;
+            border-left: 4px solid #F44336;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        .warning-box h4 { color: #D32F2F; margin-bottom: 10px; }
+        .warning-box ul { margin-left: 20px; margin-top: 8px; }
+        .warning-box li { margin-bottom: 4px; }
+
         .disclaimer {
             background-color: #FFEBEE;
             padding: 15px;
@@ -110,7 +237,7 @@
             margin: 20px 0;
             font-size: 0.9rem;
         }
-        
+
         .follow-us {
             text-align: center;
             margin: 20px 0;
@@ -118,181 +245,80 @@
             background-color: #E8F5E9;
             border-radius: 5px;
         }
-        
-        .section-with-image {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            align-items: flex-start;
-        }
-        
-        .section-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .section-image {
-            flex: 1;
-            min-width: 300px;
-            text-align: center;
-        }
-        
-        .section-image img {
-            max-width: 100%;
-            max-height: 250px;
-            height: auto;
+
+        .follow-us h3 { margin-bottom: 12px; }
+
+        .social-links { margin-top: 12px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+
+        .social-links a {
+            padding: 8px 18px;
+            color: white;
+            text-decoration: none;
             border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            border: 1px solid #ccc;
+            font-size: 0.9rem;
         }
-        
-        .image-placeholder {
-            width: 100%;
-            max-width: 300px;
-            height: 200px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+
+        footer { margin-top: 30px; text-align: center; }
+
+        .copyright {
+            background-color: #333;
+            color: white;
+            padding: 15px;
             border-radius: 5px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: #666;
-            font-size: 1rem;
-            border: 1px dashed #999;
-            margin: 0 auto;
         }
-        
-        .image-placeholder i {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            color: #888;
+
+        @media (max-width: 900px) {
+            .slide-grid { grid-template-columns: repeat(2, 1fr); }
         }
-        
-        .instruction-images {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .instruction-card {
-            background-color: white;
-            border-radius: 6px;
-            padding: 12px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        
-        .instruction-card.allowed {
-            border-top: 3px solid #4CAF50;
-        }
-        
-        .instruction-card.not-allowed {
-            border-top: 3px solid #F44336;
-        }
-        
-        .instruction-card h4 {
-            margin-bottom: 10px;
-            color: #333;
-            font-size: 0.95rem;
-        }
-        
-        .slide-image {
-            width: 100%;
-            height: 150px;
-            object-fit: contain;
-            border-radius: 4px;
-            margin-bottom: 8px;
-            border: 1px solid #ddd;
-            background-color: #f9f9f9;
-        }
-        
-        .slide-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .slide-item {
-            text-align: center;
-            background-color: white;
-            padding: 10px;
-            border-radius: 6px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .slide-item img {
-            width: 100%;
-            height: 120px;
-            object-fit: contain;
-            border-radius: 4px;
-            margin-bottom: 8px;
-            border: 1px solid #ddd;
-        }
-        
-        .slide-number {
-            font-size: 0.85rem;
-            color: #666;
-            font-weight: bold;
-            margin-top: 5px;
-        }
-        
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .main-title {
-                font-size: 1.5rem;
-            }
-            
-            .section-with-image {
-                flex-direction: column;
-            }
-            
-            .section-text, .section-image {
-                min-width: 100%;
-            }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .main-title { font-size: 1.3rem; }
+            .slide-grid { grid-template-columns: repeat(2, 1fr); }
+            .section-with-image { flex-direction: column; }
         }
     </style>
 </head>
 <body>
+
     <header>
         <h1>Base Design - Farm War Alliance</h1>
     </header>
-    
+
     <div class="main-title">BASE DESIGN</div>
-    
-    <div class="section" style="text-align: center; background-color: #E8F5E9;">
-        <h2 style="color: #2E7D32;">The Four Base Sections</h2>
-        <div class="section-content">
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin: 20px 0;">
-                <div style="background-color: #4CAF50; color: white; padding: 15px; border-radius: 5px; min-width: 200px;">
-                    <h3 style="margin-bottom: 10px;">Town Hall Section</h3>
-                    <p>TH, Eagle, Air Defenses</p>
-                </div>
-                <div style="background-color: #2196F3; color: white; padding: 15px; border-radius: 5px; min-width: 200px;">
-                    <h3 style="margin-bottom: 10px;">King Section</h3>
-                    <p>BK, Cannons, Mortars</p>
-                </div>
-                <div style="background-color: #9C27B0; color: white; padding: 15px; border-radius: 5px; min-width: 200px;">
-                    <h3 style="margin-bottom: 10px;">Queen Section</h3>
-                    <p>AQ, Infernos, Scattershots</p>
-                </div>
-                <div style="background-color: #FF9800; color: white; padding: 15px; border-radius: 5px; min-width: 200px;">
-                    <h3 style="margin-bottom: 10px;">Traps Section</h3>
-                    <p>All traps, walled in</p>
-                </div>
+
+    <!-- Four Base Sections Overview -->
+    <div class="four-sections-card">
+        <h2>The Four Base Sections</h2>
+        <div class="four-cards">
+            <div style="background-color:#4CAF50;">
+                <h3 style="margin-bottom:8px;">Town Hall Section</h3>
+                <p>TH, Eagle, Air Defenses</p>
             </div>
-            <p><em>Each section must occupy a different corner of the map</em></p>
+            <div style="background-color:#2196F3;">
+                <h3 style="margin-bottom:8px;">King Section</h3>
+                <p>BK, Cannons, Mortars</p>
+            </div>
+            <div style="background-color:#9C27B0;">
+                <h3 style="margin-bottom:8px;">Queen Section</h3>
+                <p>AQ, Infernos, Scattershots</p>
+            </div>
+            <div style="background-color:#FF9800;">
+                <h3 style="margin-bottom:8px;">Traps Section</h3>
+                <p>All traps, walled in</p>
+            </div>
         </div>
+        <p><em>Each section must occupy a different corner of the map</em></p>
     </div>
 
+    <!-- General Requirements -->
+    <div class="requirements">
+        <p><strong>FWA REQUIRES ITS MEMBERS TO SET AN EASY TO ATTACK WAR BASE THAT USES MINIMAL TROOPS TO 3 STAR (EXAMPLES BELOW)</strong></p>
+        <p>There should be four distinct non-overlapping sections in the base, each section containing at least one corner of the Clash map except for the Traps section, which must be fully enclosed with walls.</p>
+        <p>Also, you may not have any base design that is abusive, threatening, obscene, or racially, sexually, religiously, or otherwise objectionable. Failure to correct an abusive, threatening, obscene, or racially, sexually, religiously, or otherwise objectionable base could cause sanctions for your clan if offending player is not kicked out.</p>
+    </div>
+
+    <!-- Town Hall Section -->
     <div class="section">
         <h2>The Town Hall Section</h2>
         <div class="section-with-image">
@@ -302,18 +328,16 @@
                     <p><strong>For TH11:</strong> The Town Hall and Eagle Artillery should be next to each other and touch the border.</p>
                     <p><strong>For TH12+:</strong> The town hall must be in the corner with 5 spaces clear and the eagle in the opposite end with storages.</p>
                     <p><strong>TH14+ builder huts</strong> regardless of level (with the exception of the master builder) must be together with at least a 6 tile gap from any defense/building and accessible (as a group) from at least 3 sides.</p>
-                    <p><strong>TH15+ spell towers</strong> should be set rage only</p>
+                    <p><strong>TH15+ spell towers</strong> should be set rage only.</p>
                 </div>
             </div>
             <div class="section-image">
-                <img src="https://farmwaralliance.org/wp-content/uploads/2021/08/Giga_Tesla5.png" alt="Barbarian King Section" style="max-width: 250px; height: auto; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid #ccc; display: block; margin: 0 auto;">
-                <p style="margin-top: 8px; font-size: 0.85rem; color: #666; text-align: center;">
-                    <em>TH section example image</em>
-                </p>
+                <img src="https://farmwaralliance.org/wp-content/uploads/2021/08/Giga_Tesla5.png" alt="Town Hall Section Example">
             </div>
         </div>
     </div>
-    
+
+    <!-- King Section -->
     <div class="section">
         <h2>The King Section</h2>
         <div class="section-with-image">
@@ -325,14 +349,12 @@
                 </div>
             </div>
             <div class="section-image">
-                <img src="https://farmwaralliance.org/wp-content/uploads/2021/08/Barbarian_King_info.png" alt="Barbarian King Section" style="max-width: 250px; height: auto; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid #ccc; display: block; margin: 0 auto;">
-                <p style="margin-top: 10px; font-size: 0.85rem; color: #666; text-align: center;">
-                    <em>Barbarian King section example</em>
-                </p>
+                <img src="https://farmwaralliance.org/wp-content/uploads/2021/08/Barbarian_King_info.png" alt="King Section Example">
             </div>
         </div>
     </div>
-    
+
+    <!-- Queen Section -->
     <div class="section">
         <h2>The Queen Section</h2>
         <div class="section-with-image">
@@ -343,14 +365,12 @@
                 <p>This section should be moderately easy to take out with a few giants, wizards, or with barbs, archers, and a heal spell. Walls should not hinder troop deployment around this section.</p>
             </div>
             <div class="section-image">
-                <img src="https://farmwaralliance.org/wp-content/uploads/2021/08/Archer_Queen_info.png" alt="Barbarian King Section" style="max-width: 250px; height: auto; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid #ccc; display: block; margin: 0 auto;">
-                <p style="margin-top: 10px; font-size: 0.9rem; color: #666; text-align: center;">
-                    <em>Archer Queen with exposed inferno edges</em>
-                </p>
+                <img src="https://farmwaralliance.org/wp-content/uploads/2021/08/Archer_Queen_info.png" alt="Queen Section Example">
             </div>
         </div>
     </div>
-    
+
+    <!-- Traps Section -->
     <div class="section">
         <h2>The Traps Section</h2>
         <div class="section-with-image">
@@ -358,208 +378,192 @@
                 <p>should be completely walled in and contain all the traps except for hidden teslas, which should be in the Queen section.</p>
                 <p>Skeleton traps can be air or ground, but all air traps cannot overlap King's section, and ground traps cannot overlap the town hall or Queen's sections.</p>
                 <p>For more specific guidelines as to what is acceptable and what is not, please see this Google Slideshow:</p>
-                <div class="highlight" style="text-align: center;">
-                    <a href="https://docs.google.com/presentation/d/1rZSWi9ccd4Mw6Ab3FHh9AWpwBEiAG2VR1Db0Ey1ZqZ8/htmlpresent" target="_blank" style="display: inline-block; background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 10px;">
+                <div class="highlight" style="text-align:center;">
+                    <a href="https://docs.google.com/presentation/d/1rZSWi9ccd4Mw6Ab3FHh9AWpwBEiAG2VR1Db0Ey1ZqZ8/present" target="_blank"
+                       style="display:inline-block; background-color:#4CAF50; color:white; padding:10px 20px; text-decoration:none; border-radius:5px; margin-top:8px;">
                         View Google Slideshow
                     </a>
                 </div>
             </div>
             <div class="section-image">
-                <img src="https://farmwaralliance.org/wp-content/uploads/2021/08/Wall_Breaker_info.png" alt="Barbarian King Section" style="max-width: 250px; height: auto; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid #ccc; display: block; margin: 0 auto;">
-                <p style="margin-top: 10px; font-size: 0.9rem; color: #666; text-align: center;">
-                    <em>Example: Fully walled trap section</em>
-                </p>
+                <img src="https://farmwaralliance.org/wp-content/uploads/2021/08/Wall_Breaker_info.png" alt="Traps Section Example">
             </div>
         </div>
     </div>
-    
-    <div class="section" style="background-color: #FFF8E1; border-left: 4px solid #FFC107;">
-        <h2 style="color: #FF8F00;">Base Instruction Images - What's Allowed vs Not Allowed</h2>
-        <div class="section-content">
-            <p>Below are examples showing correct and incorrect base setups. These images help you understand what is allowed and what is not allowed in FWA base designs.</p>
-            
-            <h3 style="color: #5D4037; margin-top: 20px; margin-bottom: 15px;">FWA Base Design Guidelines - All 16 Slides</h3>
-            <p>Below are all 16 slides from the FWA Base Design Guidelines presentation. These images show detailed examples of correct and incorrect base setups.</p>
-            
-            <div class="slide-grid">
-                <div class="slide-item">
-                    <img src="images/slide-1.png" alt="Slide 1 - Base Guidelines">
-                    <div class="slide-number">Slide 1</div>
-                </div>
-                <div class="slide-item">
-                    <img src="images/slide-2.jpg" alt="Slide 2 - Base Guidelines">
-                    <div class="slide-number">Slide 2</div>
-                </div>
-                <div class="slide-item">
-                    <img src="images/slide-3.jpg" alt="Slide 3 - Base Guidelines">
-                    <div class="slide-number">Slide 3</div>
-                </div>
-                <div class="slide-item">
-                    <img src="images/slide-4.jpg" alt="Slide 4 - Base Guidelines">
-                    <div class="slide-number">Slide 4</div>
-                </div>
-                <div class="slide-item">
-                    <img src="images/slide-5.jpg" alt="Slide 5 - Base Guidelines">
-                    <div class="slide-number">Slide 5</div>
-                </div>
-                <div class="slide-item">
-                    <img src="images/slide-6.jpg" alt="Slide 6 - Base Guidelines">
-                    <div class="slide-number">Slide 6</div>
-                </div>
-                <div class="slide-item">
-                    <img src="images/slide-7.jpg" alt="Slide 7 - Base Guidelines">
-                    <div class="slide-number">Slide 7</div>
-                </div>
-                <div class="slide-item">
-                    <img src="images/slide-8.jpg" alt="Slide 8 - Base Guidelines">
-                    <div class="slide-number">Slide 8</div>
-                </div>
-                <div class="slide-item">
-                    <img src="images/slide-9.jpg" alt="Slide 9 - Base Guidelines">
-                    <div class="slide-number">Slide 9</div>
-                </div>
-                <div class="slide-item">
-                    <img src="images/slide-10.jpg" alt="Slide 10 - Base Guidelines">
-                    <div class="slide-number">Slide 10</div>
-                </div>
-                <div class="slide-item">
-                    <img src="images/slide-11.jpg" alt="Slide 11 - Base Guidelines">
-                    <div class="slide-number">Slide 11</div>
-                </div>
-                <div class="slide-item">
-                    <img src="images/slide-12.jpg" alt="Slide 12 - Base Guidelines">
-                    <div class="slide-number">Slide 12</div>
-                </div>
-                <div class="slide-item">
-                    <img src="images/slide-13.jpg" alt="Slide 13 - Base Guidelines">
-                    <div class="slide-number">Slide 13</div>
-                </div>
-                <div class="slide-item">
-                    <img src="images/slide-14.jpg" alt="Slide 14 - Base Guidelines">
-                    <div class="slide-number">Slide 14</div>
-                </div>
-                <div class="slide-item">
-                    <img src="images/slide-15.jpg" alt="Slide 15 - Base Guidelines">
-                    <div class="slide-number">Slide 15</div>
-                </div>
-                <div class="slide-item">
-                    <img src="images/slide-16.jpg" alt="Slide 16 - Base Guidelines">
-                    <div class="slide-number">Slide 16</div>
-                </div>
-            </div>
-            
-            <div style="margin-top: 30px; text-align: center;">
-                <div class="highlight" style="text-align: center; background-color: #FFF3E0; padding: 15px;">
-                    <h3 style="color: #FF6F00; margin-bottom: 15px;">View Complete Google Slides Presentation</h3>
-                    <p style="margin-bottom: 15px;">For the complete interactive presentation with all guidelines:</p>
-                    <a href="https://docs.google.com/presentation/d/1rZSWi9ccd4Mw6Ab3FHh9AWpwBEiAG2VR1Db0Ey1ZqZ8/present" target="_blank" style="display: inline-block; background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">
-                        Open Full Google Slides Presentation
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="requirements">
-        <p><strong>FWA REQUIRES ITS MEMBERS TO SET AN EASY TO ATTACK WAR BASE THAT USES MINIMAL TROOPS TO 3 STAR (EXAMPLES BELOW)</strong></p>
-        <p>There should be four distinct non-overlapping sections in the base, each section containing at least one corner of the Clash map except for the Traps section, which must be fully enclosed with walls.</p>
-        <p>Also, you may not have any base design that is abusive, threatening, obscene, or racially, sexually, religiously, or otherwise objectionable. Failure to correct an abusive, threatening, obscene, or racially, sexually, religiously, or otherwise objectionable base could cause sanctions for your clan if offending player is not kicked out.</p>
 
-    
-    <div class="section" style="background-color: #FFF8E1; border-left: 4px solid #FFC107;">
-        <h2 style="color: #FF8F00;">⚔🏠 FWA BASE GUIDE 🏠⚔</h2>
-        <div class="section-content">
-            <div class="highlight" style="text-align: center; background-color: #FFF3E0;">
-                <h3 style="color: #FF6F00; margin-bottom: 15px;">FWA Base Guide & Resources</h3>
-                <p style="margin-bottom: 15px; font-size: 1.1rem;">
-                    <a href="http://tiny.cc/FWABaseGuide" target="_blank" style="color: #1976D2; font-weight: bold; text-decoration: none;">
-                        📘 FWA BASE GUIDE - Complete Guide
-                    </a>
-                </p>
+    <!-- Base Instruction Images -->
+    <div class="section" style="border-left-color:#FFC107;">
+        <h2 style="color:#FF8F00;">Base Instruction Images — What's Allowed vs Not Allowed</h2>
+        <p style="margin-bottom:15px;">Click any image to enlarge. These are the 16 slides from the FWA Base Design Guidelines.</p>
+
+        <div class="slide-grid">
+            <div class="slide-item" onclick="openModal('images/slide-1.png','Slide 1')">
+                <img src="images/slide-1.png" alt="Slide 1">
+                <div class="slide-number">Slide 1</div>
             </div>
-            
-            <h3 style="color: #5D4037; margin-top: 20px; margin-bottom: 15px;">Base Pictures by Town Hall Level:</h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; margin-bottom: 20px;">
-                <div style="background-color: #F5F5F5; padding: 15px; border-radius: 5px; border: 1px solid #E0E0E0;">
-                    <strong>TH18:</strong> <a href="https://tiny.cc/fwabases18" target="_blank">https://tiny.cc/fwabases18</a>
-                </div>
-                <div style="background-color: #F5F5F5; padding: 15px; border-radius: 5px; border: 1px solid #E0E0E0;">
-                    <strong>TH17:</strong> <a href="https://tiny.cc/fwabases17" target="_blank">https://tiny.cc/fwabases17</a>
-                </div>
-                <div style="background-color: #F5F5F5; padding: 15px; border-radius: 5px; border: 1px solid #E0E0E0;">
-                    <strong>TH16:</strong> <a href="https://tiny.cc/fwabases16" target="_blank">https://tiny.cc/fwabases16</a>
-                </div>
-                <div style="background-color: #F5F5F5; padding: 15px; border-radius: 5px; border: 1px solid #E0E0E0;">
-                    <strong>TH15:</strong> <a href="https://Tiny.cc/fwabases15" target="_blank">https://Tiny.cc/fwabases15</a>
-                </div>
-                <div style="background-color: #F5F5F5; padding: 15px; border-radius: 5px; border: 1px solid #E0E0E0;">
-                    <strong>TH14:</strong> <a href="https://Tiny.cc/fwabases14" target="_blank">https://Tiny.cc/fwabases14</a>
-                </div>
-                <div style="background-color: #F5F5F5; padding: 15px; border-radius: 5px; border: 1px solid #E0E0E0;">
-                    <strong>TH13:</strong> <a href="https://tiny.cc/fwabases13" target="_blank">https://tiny.cc/fwabases13</a>
-                </div>
-                <div style="background-color: #F5F5F5; padding: 15px; border-radius: 5px; border: 1px solid #E0E0E0;">
-                    <strong>TH12:</strong> <a href="https://tiny.cc/fwabase12" target="_blank">https://tiny.cc/fwabase12</a>
-                </div>
-                <div style="background-color: #F5F5F5; padding: 15px; border-radius: 5px; border: 1px solid #E0E0E0;">
-                    <strong>TH11:</strong> <a href="https://tiny.cc/fwabase11" target="_blank">https://tiny.cc/fwabase11</a>
-                </div>
-                <div style="background-color: #F5F5F5; padding: 15px; border-radius: 5px; border: 1px solid #E0E0E0;">
-                    <strong>TH10:</strong> <a href="https://tiny.cc/fwabase10" target="_blank">https://tiny.cc/fwabase10</a>
-                </div>
-                <div style="background-color: #F5F5F5; padding: 15px; border-radius: 5px; border: 1px solid #E0E0E0;">
-                    <strong>TH9:</strong> <a href="https://tiny.cc/fwabases9" target="_blank">https://tiny.cc/fwabases9</a>
-                </div>
+            <div class="slide-item" onclick="openModal('images/slide-2.jpg','Slide 2')">
+                <img src="images/slide-2.jpg" alt="Slide 2">
+                <div class="slide-number">Slide 2</div>
             </div>
-            
-            <h3 style="color: #5D4037; margin-top: 20px; margin-bottom: 15px;">Copy Layout Links (Direct Import to Clash of Clans):</h3>
-            <div style="background-color: #E8F5E9; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
-                <p style="margin-bottom: 10px;"><strong>TH18:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH18%3AWB%3AAAAAAgAAAAMIFXlpMp2DcHS1uqUMNgA4" target="_blank">Copy Layout Link</a></p>
-                <p style="margin-bottom: 10px;"><strong>TH17:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH17%3AWB%3AAAAAMwAAAAJvKqSJR0K6j5vKXNzKC0Eo" target="_blank">Copy Layout Link</a></p>
-                <p style="margin-bottom: 10px;"><strong>TH16:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH16%3AWB%3AAAAAWQAAAAHYhYD8UAx4YzwvwSR5_kYp" target="_blank">Copy Layout Link</a></p>
-                <p style="margin-bottom: 10px;"><strong>TH15:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH15%3AWB%3AAAAAVAAAAAHixZ2x1n8Q5kcjKac5Ta3R" target="_blank">Copy Layout Link</a></p>
-                <p style="margin-bottom: 10px;"><strong>TH14:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH14%3AWB%3AAAAAPQAAAAJQFTvvhxVFhpHEctRKa2RJ" target="_blank">Copy Layout Link</a></p>
-                <p style="margin-bottom: 10px;"><strong>TH13:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH13%3AWB%3AAAAANQAAAAJg3K_0TUhkZz6SfZeONbRt" target="_blank">Copy Layout Link</a></p>
-                <p style="margin-bottom: 10px;"><strong>TH12:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH12%3AWB%3AAAAAAAAAAAMJ-9kz6ATWMmoYhsM5X4Zo" target="_blank">Copy Layout Link</a></p>
-                <p style="margin-bottom: 10px;"><strong>TH11:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH11%3AWB%3AAAAAJQAAAAKdWWT-kVMWijtjXI3Ieeeu" target="_blank">Copy Layout Link</a></p>
-                <p style="margin-bottom: 10px;"><strong>TH10:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH10%3AWB%3AAAAASwAAAAHxz3UQ1NJeeTS0DGN61GmR" target="_blank">Copy Layout Link</a></p>
-                <p style="margin-bottom: 10px;"><strong>TH9:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH9%3AWB%3AAAAANQAAAAJg3suFcORqtzL2m38RiJuD" target="_blank">Copy Layout Link</a></p>
+            <div class="slide-item" onclick="openModal('images/slide-3.jpg','Slide 3')">
+                <img src="images/slide-3.jpg" alt="Slide 3">
+                <div class="slide-number">Slide 3</div>
             </div>
-            
-            <div class="highlight" style="background-color: #FFEBEE; border-left: 4px solid #F44336;">
-                <h4 style="color: #D32F2F; margin-bottom: 10px;">⚠️ IMPORTANT NOTE ⚠️</h4>
-                <p>Please note you are still responsible for your bases being correct. If you use these designs, please double-check the placement of:</p>
-                <ul style="margin-left: 20px; margin-top: 10px;">
-                    <li>Spell Towers</li>
-                    <li>X-Bows</li>
-                    <li>Inferno Towers</li>
-                    <li>Firespitters</li>
-                    <li>Skeleton Traps</li>
-                </ul>
-                <p style="margin-top: 10px;">Ensure all placements follow FWA guidelines for accuracy.</p>
+            <div class="slide-item" onclick="openModal('images/slide-4.jpg','Slide 4')">
+                <img src="images/slide-4.jpg" alt="Slide 4">
+                <div class="slide-number">Slide 4</div>
+            </div>
+            <div class="slide-item" onclick="openModal('images/slide-5.jpg','Slide 5')">
+                <img src="images/slide-5.jpg" alt="Slide 5">
+                <div class="slide-number">Slide 5</div>
+            </div>
+            <div class="slide-item" onclick="openModal('images/slide-6.jpg','Slide 6')">
+                <img src="images/slide-6.jpg" alt="Slide 6">
+                <div class="slide-number">Slide 6</div>
+            </div>
+            <div class="slide-item" onclick="openModal('images/slide-7.jpg','Slide 7')">
+                <img src="images/slide-7.jpg" alt="Slide 7">
+                <div class="slide-number">Slide 7</div>
+            </div>
+            <div class="slide-item" onclick="openModal('images/slide-8.jpg','Slide 8')">
+                <img src="images/slide-8.jpg" alt="Slide 8">
+                <div class="slide-number">Slide 8</div>
+            </div>
+            <div class="slide-item" onclick="openModal('images/slide-9.jpg','Slide 9')">
+                <img src="images/slide-9.jpg" alt="Slide 9">
+                <div class="slide-number">Slide 9</div>
+            </div>
+            <div class="slide-item" onclick="openModal('images/slide-10.jpg','Slide 10')">
+                <img src="images/slide-10.jpg" alt="Slide 10">
+                <div class="slide-number">Slide 10</div>
+            </div>
+            <div class="slide-item" onclick="openModal('images/slide-11.jpg','Slide 11')">
+                <img src="images/slide-11.jpg" alt="Slide 11">
+                <div class="slide-number">Slide 11</div>
+            </div>
+            <div class="slide-item" onclick="openModal('images/slide-12.jpg','Slide 12')">
+                <img src="images/slide-12.jpg" alt="Slide 12">
+                <div class="slide-number">Slide 12</div>
+            </div>
+            <div class="slide-item" onclick="openModal('images/slide-13.jpg','Slide 13')">
+                <img src="images/slide-13.jpg" alt="Slide 13">
+                <div class="slide-number">Slide 13</div>
+            </div>
+            <div class="slide-item" onclick="openModal('images/slide-14.jpg','Slide 14')">
+                <img src="images/slide-14.jpg" alt="Slide 14">
+                <div class="slide-number">Slide 14</div>
+            </div>
+            <div class="slide-item" onclick="openModal('images/slide-15.jpg','Slide 15')">
+                <img src="images/slide-15.jpg" alt="Slide 15">
+                <div class="slide-number">Slide 15</div>
+            </div>
+            <div class="slide-item" onclick="openModal('images/slide-16.jpg','Slide 16')">
+                <img src="images/slide-16.jpg" alt="Slide 16">
+                <div class="slide-number">Slide 16</div>
             </div>
         </div>
     </div>
-    
-    <div class="disclaimer">
-        <p><strong>Intellectual Property Notice:</strong> The terms "Farm War Alliance" and "FWA", the FWA Logo and all graphics used on this webpage are all intellectual property and may not be used without express permission. To obtain permission please use the contact me link found in this webpage. The Farm War Alliance is a registered organization and protected by various international intellectual material laws including possible copyright and trademark laws. Please consult us prior to using any material found on this web site.</p>
+
+    <!-- FWA Base Guide -->
+    <div class="guide-section">
+        <h2>⚔🏠 FWA BASE GUIDE 🏠⚔</h2>
+        <div class="highlight" style="text-align:center; margin-bottom:20px;">
+            <a href="http://tiny.cc/FWABaseGuide" target="_blank" style="color:#1976D2; font-weight:bold; font-size:1.1rem;">
+                📘 FWA BASE GUIDE - Complete Guide
+            </a>
+        </div>
+
+        <h3 style="color:#5D4037; margin-bottom:12px;">Base Pictures by Town Hall Level:</h3>
+        <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr)); gap:10px; margin-bottom:20px;">
+            <div style="background:#F5F5F5; padding:12px; border-radius:5px; border:1px solid #E0E0E0;"><strong>TH18:</strong> <a href="https://tiny.cc/fwabases18" target="_blank">tiny.cc/fwabases18</a></div>
+            <div style="background:#F5F5F5; padding:12px; border-radius:5px; border:1px solid #E0E0E0;"><strong>TH17:</strong> <a href="https://tiny.cc/fwabases17" target="_blank">tiny.cc/fwabases17</a></div>
+            <div style="background:#F5F5F5; padding:12px; border-radius:5px; border:1px solid #E0E0E0;"><strong>TH16:</strong> <a href="https://tiny.cc/fwabases16" target="_blank">tiny.cc/fwabases16</a></div>
+            <div style="background:#F5F5F5; padding:12px; border-radius:5px; border:1px solid #E0E0E0;"><strong>TH15:</strong> <a href="https://tiny.cc/fwabases15" target="_blank">tiny.cc/fwabases15</a></div>
+            <div style="background:#F5F5F5; padding:12px; border-radius:5px; border:1px solid #E0E0E0;"><strong>TH14:</strong> <a href="https://tiny.cc/fwabases14" target="_blank">tiny.cc/fwabases14</a></div>
+            <div style="background:#F5F5F5; padding:12px; border-radius:5px; border:1px solid #E0E0E0;"><strong>TH13:</strong> <a href="https://tiny.cc/fwabases13" target="_blank">tiny.cc/fwabases13</a></div>
+            <div style="background:#F5F5F5; padding:12px; border-radius:5px; border:1px solid #E0E0E0;"><strong>TH12:</strong> <a href="https://tiny.cc/fwabase12" target="_blank">tiny.cc/fwabase12</a></div>
+            <div style="background:#F5F5F5; padding:12px; border-radius:5px; border:1px solid #E0E0E0;"><strong>TH11:</strong> <a href="https://tiny.cc/fwabase11" target="_blank">tiny.cc/fwabase11</a></div>
+            <div style="background:#F5F5F5; padding:12px; border-radius:5px; border:1px solid #E0E0E0;"><strong>TH10:</strong> <a href="https://tiny.cc/fwabase10" target="_blank">tiny.cc/fwabase10</a></div>
+            <div style="background:#F5F5F5; padding:12px; border-radius:5px; border:1px solid #E0E0E0;"><strong>TH9:</strong> <a href="https://tiny.cc/fwabases9" target="_blank">tiny.cc/fwabases9</a></div>
+        </div>
+
+        <h3 style="color:#5D4037; margin-bottom:12px;">Copy Layout Links (Direct Import to Clash of Clans):</h3>
+        <div class="layout-links">
+            <p><strong>TH18:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH18%3AWB%3AAAAAAgAAAAMIFXlpMp2DcHS1uqUMNgA4" target="_blank">Copy Layout</a></p>
+            <p><strong>TH17:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH17%3AWB%3AAAAAMwAAAAJvKqSJR0K6j5vKXNzKC0Eo" target="_blank">Copy Layout</a></p>
+            <p><strong>TH16:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH16%3AWB%3AAAAAWQAAAAHYhYD8UAx4YzwvwSR5_kYp" target="_blank">Copy Layout</a></p>
+            <p><strong>TH15:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH15%3AWB%3AAAAAVAAAAAHixZ2x1n8Q5kcjKac5Ta3R" target="_blank">Copy Layout</a></p>
+            <p><strong>TH14:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH14%3AWB%3AAAAAPQAAAAJQFTvvhxVFhpHEctRKa2RJ" target="_blank">Copy Layout</a></p>
+            <p><strong>TH13:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH13%3AWB%3AAAAANQAAAAJg3K_0TUhkZz6SfZeONbRt" target="_blank">Copy Layout</a></p>
+            <p><strong>TH12:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH12%3AWB%3AAAAAAAAAAAMJ-9kz6ATWMmoYhsM5X4Zo" target="_blank">Copy Layout</a></p>
+            <p><strong>TH11:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH11%3AWB%3AAAAAJQAAAAKdWWT-kVMWijtjXI3Ieeeu" target="_blank">Copy Layout</a></p>
+            <p><strong>TH10:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH10%3AWB%3AAAAASwAAAAHxz3UQ1NJeeTS0DGN61GmR" target="_blank">Copy Layout</a></p>
+            <p><strong>TH9:</strong> <a href="https://link.clashofclans.com/en?action=OpenLayout&id=TH9%3AWB%3AAAAANQAAAAJg3suFcORqtzL2m38RiJuD" target="_blank">Copy Layout</a></p>
+        </div>
+
+        <div class="warning-box">
+            <h4>⚠️ IMPORTANT NOTE ⚠️</h4>
+            <p>Please note you are still responsible for your bases being correct. If you use these designs, please double-check the placement of:</p>
+            <ul>
+                <li>Spell Towers</li>
+                <li>X-Bows</li>
+                <li>Inferno Towers</li>
+                <li>Firespitters</li>
+                <li>Skeleton Traps</li>
+            </ul>
+        </div>
     </div>
-    
+
+    <!-- Disclaimer -->
+    <div class="disclaimer">
+        <p><strong>Intellectual Property Notice:</strong> The terms "Farm War Alliance" and "FWA", the FWA Logo and all graphics used on this webpage are all intellectual property and may not be used without express permission. The Farm War Alliance is a registered organization and protected by various international intellectual material laws including possible copyright and trademark laws. Please consult us prior to using any material found on this web site.</p>
+    </div>
+
+    <!-- Follow Us -->
     <div class="follow-us">
         <h3>FOLLOW US</h3>
-        <p>Stay connected with the Farm War Alliance community</p>
-        <div style="margin-top: 15px;">
-            <a href="#" style="display: inline-block; margin: 0 10px; padding: 8px 15px; background-color: #4267B2; color: white; text-decoration: none; border-radius: 5px;">Facebook</a>
-            <a href="#" style="display: inline-block; margin: 0 10px; padding: 8px 15px; background-color: #1DA1F2; color: white; text-decoration: none; border-radius: 5px;">Twitter</a>
-            <a href="#" style="display: inline-block; margin: 0 10px; padding: 8px 15px; background-color: #E1306C; color: white; text-decoration: none; border-radius: 5px;">Instagram</a>
-            <a href="#" style="display: inline-block; margin: 0 10px; padding: 8px 15px; background-color: #FF0000; color: white; text-decoration: none; border-radius: 5px;">YouTube</a>
+        <div class="social-links">
+            <a href="#" style="background-color:#4267B2;">Facebook</a>
+            <a href="https://twitter.com/FarmWarAlliance" target="_blank" style="background-color:#1DA1F2;">Twitter</a>
+            <a href="https://band.us/@reqfwa" target="_blank" style="background-color:#FAE100; color:#333;">Band (REQ)</a>
+            <a href="https://band.us/@joinfwa" target="_blank" style="background-color:#FAE100; color:#333;">Band (Join)</a>
         </div>
     </div>
-    
+
+    <!-- Footer -->
     <footer>
         <div class="copyright">
-            © Copyright 2021, 2022, 2023, 2024, 2025, 2026. Farm War Alliance. All Rights Reserved.
+            &copy; Copyright 2021, 2022, 2023, 2024, 2025, 2026. Farm War Alliance. All Rights Reserved.
         </div>
     </footer>
+
+    <!-- Modal for enlarged images -->
+    <div class="modal" id="imgModal" onclick="closeModal()">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <img class="modal-img" id="modalImg" src="" alt="">
+        <div class="modal-caption" id="modalCaption"></div>
+    </div>
+
+    <script>
+        function openModal(src, caption) {
+            const modal = document.getElementById('imgModal');
+            const img = document.getElementById('modalImg');
+            const cap = document.getElementById('modalCaption');
+            img.src = src;
+            cap.textContent = caption;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('imgModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+
 </body>
 </html>
